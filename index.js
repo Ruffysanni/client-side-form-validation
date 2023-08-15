@@ -44,6 +44,7 @@ function checkInputs(){
     if(passwordValue === '') {
 		setErrorFor(password, 'Password cannot be blank');
 	} else {
+        CheckPassword(password);
 		setSuccessFor(password);
 	}
 	
@@ -57,6 +58,7 @@ function checkInputs(){
 	}
 }
 
+    //Setting Error status for validation
 function setErrorFor(input, message) {
 	const formControl = input.parentElement;
 	const small = formControl.querySelector('small');
@@ -66,6 +68,7 @@ function setErrorFor(input, message) {
 	small.innerText = message;
 }
 
+    //settinng Success status for validation
 function setSuccessFor(input) {
 	const formControl = input.parentElement;
 
@@ -76,5 +79,16 @@ function setSuccessFor(input) {
 function isEmail(email){
     return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
 }
-//
+// Validating password
+function CheckPassword(passwordValue) {
+    var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+    if (passwordValue.value.match(passw)) {
+       alert('Password OK!')
+       return true;
+    }
+    else {
+       alert('Invalid Password!')
+       return false;
+    }
+ }
 
